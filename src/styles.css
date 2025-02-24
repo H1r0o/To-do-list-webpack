@@ -87,3 +87,46 @@ body {
     height: 2rem;
     font-size: 1rem;
 }
+
+/* stykizowanie elementu task */
+#contentContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    padding: 10px;
+    height: 200px;
+    min-width: 200px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+
+    font-size: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.lowPriority {
+    background-color: #9eff8b;
+}
+
+.mediumPriority {
+    background-color: #fdff8b;
+}
+
+.highPriority {
+    background-color: #ff9c8b;
+}
+
+.taskDescription {
+    font-size: 0.8rem;
+    font-weight: 400;
+}
