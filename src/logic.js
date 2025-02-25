@@ -1,6 +1,8 @@
 //Selektory modala
 const modal = document.querySelector("#modalContainer");
 
+//Selektor miejsca do wyświetlenia zadań
+const homeContainer = document.querySelector("#contentContainer");
 
 //Lista zadań
 const taskList = [{
@@ -24,6 +26,7 @@ function creatingTask(name, description, deadline, priority) {
         deadline: deadline,
         priority: priority,
         isDone: false,
+        isDeleted: false,
     };
     taskList.push(task);
 };
@@ -76,13 +79,39 @@ function displayTask(displayPlace, currentTaskList) {
         <div class="taskDescription">${task.description}</div>
         <div class="taskDeadline">${task.deadline}</div>
         <div class="taskPriority">Priority: ${task.priority}</div>
-        <button class="taskDone">Done</button>
-        <button class="taskDelete">Delete</button>
+        <div id="taskButtons">
+        <button  class="taskDone taskButton">Done</button>
+        <button  class="taskDelete taskButton">Delete</button>
+        </div>
         `;
         displayPlace.appendChild(taskDiv);
+
+        //Eventy przycisków taska
+        const taskDoneBtn = document.querySelectorAll(".taskDone");
+        const taskDeleteBtn = document.querySelectorAll(".taskDelete");
+
+        taskDoneBtn[index].addEventListener("click", () => {
+            if (task.isDone === true) {
+                return;
+            }
+            task.isDone = true;
+            taskListCompleted.push(task);
+            taskList.splice(index, 1);
+            displayTask(homeContainer, taskList);
+        });
+        taskDeleteBtn[index].addEventListener("click", () => {
+            if (task.isDeleted === true) {
+                return;
+            }
+            task.isDeleted = true;
+            taskListTrash.push(task);
+            taskList.splice(index, 1);
+            displayTask(homeContainer, taskList);
+        });
     });
 
 };
+
 
 export { taskList, taskListCompleted, taskListTrash, creatingTask, showModal, closeModal, addTask, displayTask };
 

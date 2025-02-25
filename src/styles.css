@@ -114,6 +114,41 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
+#taskButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.taskButton {
+    width: 40%;
+    height: 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.taskDelete {
+    background-color: #ff0000;
+    color: white;
+}
+
+.taskDelete:hover {
+    background-color: #ff4d4d;
+}
+
+.taskDone {
+    background-color: #289612;
+    color: white;
+}
+
+.taskDone:hover {
+    background-color: #3dbf3d;
+}
+
 .lowPriority {
     background-color: #9eff8b;
 }
@@ -129,4 +164,17 @@ body {
 .taskDescription {
     font-size: 0.8rem;
     font-weight: 400;
+}
+
+
+/* completed */
+
+.taskDivCompleted {
+    border-color: #289612;
+    background-color: rgb(87, 243, 87);
+}
+
+.taskUndo {
+    background-color: #ffae00;
+    color: white;
 }

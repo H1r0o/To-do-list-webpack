@@ -1,5 +1,11 @@
 import "./styles.css";
 import { taskList, taskListCompleted, taskListTrash, creatingTask, showModal, closeModal, addTask, displayTask } from "./logic.js";
+import { creatingCompletedPage } from "./completedPage.js";
+
+//Aktywny przycisk
+let homePage = true;
+let completedPage = false;
+let trashPage = false;
 
 //Selektory przycisków
 const homeBtn = document.querySelector("#home");
@@ -19,13 +25,28 @@ displayTask(homeContainer, taskList);
 
 //Eventy przycisków strony
 homeBtn.addEventListener("click", () => {
-    console.log("Home");
+    if (homePage === false) {
+        homePage = true;
+        completedPage = false;
+        trashPage = false;
+        displayTask(homeContainer, taskList);
+    };
 });
 completedBtn.addEventListener("click", () => {
-    console.log("Completed");
+    if (completedPage === false) {
+        homePage = false;
+        completedPage = true;
+        trashPage = false;
+        creatingCompletedPage(homeContainer, taskListCompleted);
+    };
 });
 trashBtn.addEventListener("click", () => {
-    console.log("Trash");
+    if (trashPage === false) {
+        homePage = false;
+        completedPage = false;
+        trashPage = true;
+        displayTask(homeContainer, taskListTrash);
+    };
 });
 addTaskBtn.addEventListener("click", () => {
     showModal();
@@ -39,3 +60,4 @@ addModalBtn.addEventListener("click", () => {
     addTask();
     displayTask(homeContainer, taskList);
 });
+
